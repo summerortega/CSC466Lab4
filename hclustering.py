@@ -2,15 +2,14 @@ import numpy as np
 import pandas as pd
 import numpy
 from sklearn.metrics import pairwise_distances
-
-
 from kmeans import read_csv
 def main(filename, threshold):
     df = read_csv(filename)
-    clusters = [x for x in df.to_numpy()]
+    data_points = [[x] for x in df.to_numpy()]
+    clusters = [{"type": "leaf", "data": x} for x in df.to_numpy()]
+    matrix = pairwise_distances(data_points, Y=None, metric='euclidean')
 
     while len(clusters) > 1:
-        matrix = pairwise_distances(clusters, Y=None, metric='euclidean')
         # for j in range(len(clusters)):
         #     for k in range(j+1, len(clusters)):
         #         matrix[j][k] = distance_calculation(clusters[j], clusters[k])
@@ -40,7 +39,11 @@ def main(filename, threshold):
         df_matrix = df_matrix.drop(b, axis=0)
         df_matrix = df_matrix.drop(b, axis=1)
 
-        clusters = []
+        data_points[a] = data_points[a].extend(data_points[b])
+        data_points.pop(b)
+
+        clusters[a] = {"type": "node", "height": 21, "nodes": [clusters[a], clusters[b]]}
+        clusters.pop(b)
 
 
 

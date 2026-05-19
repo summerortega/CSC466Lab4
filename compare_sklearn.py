@@ -11,15 +11,15 @@ def main(filename, ground_truth_col=None):
     labels = model.fit_predict(data)
     print_cluster_report(data, labels, ground_truth)
 
-    print("\nSklearn Agglomerative (Hierarchical)")
-    model = AgglomerativeClustering(n_clusters=4, linkage="single")
-    labels = model.fit_predict(data)
-    print_cluster_report(data, labels, ground_truth)
-
-    print("\nSklearn DBSCAN")
-    model = DBSCAN(eps=5, min_samples=4)
-    labels = model.fit_predict(data)
-    print_cluster_report(data, labels, ground_truth)
+    # print("\nSklearn Agglomerative (Hierarchical)")
+    # model = AgglomerativeClustering(n_clusters=2, linkage="single")
+    # labels = model.fit_predict(data)
+    # print_cluster_report(data, labels, ground_truth)
+    #
+    # print("\nSklearn DBSCAN")
+    # model = DBSCAN(eps=0.4, min_samples=3)
+    # labels = model.fit_predict(data)
+    # print_cluster_report(data, labels, ground_truth)
 
 
 if __name__ == "__main__":

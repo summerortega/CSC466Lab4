@@ -101,22 +101,27 @@ def print_cluster_report(data, labels, ground_truth=None):
         points = data[labels == label]
 
         if label == -1:
-            print("\nOutliers:")
-            print("Number of outliers:", len(points))
-            for point in points[:10]:
-                print(point.tolist())
+            print("\nNumber of outliers:", len(points))
+            if len(points) <= 10:
+                print("Outliers:")
+                for point in points:
+                    print(point.tolist())
+            else:
+                print("Representative outliers:")
+                for point in points[:5]:
+                    print(point.tolist())
             continue
 
         print(f"\nCluster {label + 1}:")
         print("Number of points:", len(points))
 
-        if len(points) <= 20:
+        if len(points) <= 10:
             print("Points:")
             for point in points:
                 print(point.tolist())
         else:
             print("Representative points:")
-            for point in points[:3]:
+            for point in points[:5]:
                 print(point.tolist())
 
         c = centroid(points)

@@ -61,7 +61,9 @@ def main(filename, threshold=None, ground_truth_col=None):
 
         print_cluster_report(arr, labels, ground_truth)
 
-        with open("dendrogram_cut.json", "w") as f:
+        with open("clusters_cut.txt", "w") as f:
+            f.write(f"Clusters after cutting at threshold {threshold}\n\n")
+
             for i, cluster in enumerate(cut_clusters, start=1):
                 f.write(f"Cluster {i}:\n")
                 for point in cluster:

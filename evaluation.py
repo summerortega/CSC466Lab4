@@ -135,3 +135,4 @@ def print_cluster_report(data, labels, ground_truth=None):
             print("Cluster silhouette score:", float(np.mean(cluster_silhouettes)))
         else:
             print("Cluster silhouette score: undefined")
+

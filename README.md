@@ -13,4 +13,4 @@ The dendrogram is printed out as stored into dendrogram.json
 The optional third argument is the column index of the ground-truth class label (Refer to header).
 This allows for the Rand Index to be computed. 
 
-evaluation.py is used for calcuating evaluation metrics across the different clustering algorithms. 
+Evaluation.py is used to calculate evaluation metrics for the 3 clustering algorithms. 
